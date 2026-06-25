@@ -240,3 +240,15 @@ html {
 .transform-style-3d {
   transform-style: preserve-3d;
 }
+
+/* Responsive scaling for 3D isometric keyboard to prevent overflow */
+@media (max-width: 540px) {
+  .isometric-grid {
+    transform: rotateX(45deg) rotateZ(-30deg) scale(0.75) !important;
+  }
+}
+@media (max-width: 400px) {
+  .isometric-grid {
+    transform: rotateX(45deg) rotateZ(-30deg) scale(0.65) !important;
+  }
+}

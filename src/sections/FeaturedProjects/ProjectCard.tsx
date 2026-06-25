@@ -146,7 +146,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
       <div
         ref={ref}
         data-index={index}
-        className="project-card relative flex flex-col md:flex-row w-full h-[68vh] md:h-[78vh] rounded-[18px] overflow-hidden shadow-[0_24px_50px_-20px_rgba(0,0,0,0.6)] border border-white/8 select-none"
+        className="project-card relative flex flex-col md:flex-row w-full h-auto md:h-[78vh] rounded-[18px] overflow-hidden shadow-[0_24px_50px_-20px_rgba(0,0,0,0.6)] border border-white/8 select-none"
         style={{
           position: isMobile ? "relative" : "sticky",
           top: topOffset,
@@ -158,7 +158,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
       >
         {/* ── Left Column: Magazine Cover ── */}
         <div
-          className="relative w-full md:w-[44%] h-[24vh] md:h-full overflow-hidden flex flex-col justify-between p-8 md:p-12"
+          className="relative w-full md:w-[44%] h-[220px] xs:h-[260px] md:h-full overflow-hidden flex flex-col justify-between p-6 xs:p-8 md:p-12"
           style={{
             background: project.id === "menu-ocr"
               ? `radial-gradient(circle at center, rgba(124, 58, 237, 0.12) 0%, ${project.accent} 70%)`
@@ -174,17 +174,17 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
             <>
               {project.coverFit === "contain" ? (
                 // Composed Contain Cover (Card 2 & Card 4)
-                <div className="absolute inset-0 p-3.5 md:p-4 z-10 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 px-4 pt-4 pb-14 md:p-4 z-10 flex items-center justify-center overflow-hidden">
                   <ContainCover src={project.cover} index={index} />
                 </div>
               ) : index === 2 ? (
                 // SaaS Browser Frame Cover with Bottom Fade (Card 3)
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 z-10 pointer-events-none">
+                <div className="absolute inset-0 flex items-center justify-center px-4 pt-4 pb-14 md:p-8 z-10 pointer-events-none">
                   <SaasBrowserFrame src={project.cover} accent={project.accent} />
                 </div>
               ) : (
                 // Browser Frame Cover (Card 1)
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 z-10 pointer-events-none">
+                <div className="absolute inset-0 flex items-center justify-center px-4 pt-4 pb-14 md:p-8 z-10 pointer-events-none">
                   <BrowserFrame src={project.cover} index={index} />
                 </div>
               )}
@@ -212,7 +212,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
         </div>
 
         {/* ── Right Column: Dark Panel ── */}
-        <div className="w-full md:w-[56%] h-full bg-[#141416] p-8 md:p-12 flex flex-col justify-between text-left">
+        <div className="w-full md:w-[56%] h-auto md:h-full bg-[#141416] p-6 xs:p-8 md:p-12 flex flex-col justify-between text-left">
           <div className="flex flex-col gap-6">
             {/* Header section */}
             <div>

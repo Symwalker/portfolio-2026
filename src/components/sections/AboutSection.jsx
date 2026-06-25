@@ -33,7 +33,7 @@ import { cn } from "@/lib/utils"
 const Keycap = memo(function Keycap({ skill, onHoverStart, onHoverEnd }) {
   return (
     <div 
-      className="relative w-20 h-20 sm:w-24 sm:h-24 group cursor-pointer transform-style-3d pointer-events-auto"
+      className="relative w-12 h-12 xs:w-16 xs:h-16 sm:w-24 sm:h-24 group cursor-pointer transform-style-3d pointer-events-auto"
       onMouseEnter={() => onHoverStart(skill)}
       onMouseLeave={onHoverEnd}
     >
@@ -57,11 +57,11 @@ const Keycap = memo(function Keycap({ skill, onHoverStart, onHoverEnd }) {
         }}
       >
         {/* Top Face */}
-        <div className="absolute inset-0 bg-[#181824] border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-1.5 text-[#F5F0E8] select-none transition-colors duration-300 group-hover:border-[#C5FF3C]/30 transform-style-3d">
-          <div className="text-white/80 group-hover:text-[#C5FF3C] transition-colors duration-300 scale-105 sm:scale-110">
+        <div className="absolute inset-0 bg-[#181824] border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-[#F5F0E8] select-none transition-colors duration-300 group-hover:border-[#C5FF3C]/30 transform-style-3d">
+          <div className="text-white/80 group-hover:text-[#C5FF3C] transition-colors duration-300 scale-[0.6] xs:scale-[0.8] sm:scale-110">
             {skill.icon}
           </div>
-          <span className="font-space-grotesk font-extrabold text-[9px] sm:text-[10px] tracking-widest text-[#F5F0E8]/50 group-hover:text-[#C5FF3C] transition-colors duration-300 uppercase">
+          <span className="font-space-grotesk font-extrabold text-[7px] xs:text-[9px] sm:text-[10px] tracking-widest text-[#F5F0E8]/50 group-hover:text-[#C5FF3C] transition-colors duration-300 uppercase">
             {skill.label}
           </span>
         </div>
@@ -283,11 +283,11 @@ export function AboutSection() {
       {/* Background Glow Ring */}
       <div className="absolute right-0 top-1/4 w-[400px] h-[400px] rounded-full bg-[#C5FF3C]/2 blur-[120px] pointer-events-none" />
 
-      <div className="mx-auto max-w-5xl px-6 md:px-12 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-12 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-20 items-start relative">
           
           {/* ── LEFT COLUMN: STICKY PROFILE PANEL ── */}
-          <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-32 self-start flex flex-col items-center lg:items-start gap-6 text-center lg:text-left z-10">
+          <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-32 self-start flex flex-col items-center lg:items-start gap-4 sm:gap-6 text-center lg:text-left z-10">
             
             {/* Circle Avatar */}
             <div className="w-44 h-44 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative group">
@@ -300,7 +300,7 @@ export function AboutSection() {
             </div>
 
             {/* Location Badge */}
-            <div className="flex items-center gap-2.5 px-4.5 py-2 rounded-full border border-white/5 bg-white/2 backdrop-blur-sm shadow-sm select-none">
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/5 bg-white/2 backdrop-blur-sm shadow-sm select-none">
               <IconMapPin size={15} className="text-[#C5FF3C]" />
               <span className="font-space-grotesk text-xs tracking-wider text-[#F5F0E8]/70 uppercase">
                 Asia/Karachi
@@ -320,10 +320,10 @@ export function AboutSection() {
           </div>
 
           {/* ── RIGHT COLUMN: SCROLLABLE CORE CONTENT ── */}
-          <div className="col-span-12 lg:col-span-8 flex flex-col gap-24 z-10">
+          <div className="col-span-12 lg:col-span-8 flex flex-col gap-16 sm:gap-24 z-10">
             
             {/* Section 1: Intro Header Block */}
-            <div className="flex flex-col items-start text-left relative">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left relative">
               
               {/* Call Schedule Button pill */}
               <div className="mb-6">
@@ -338,15 +338,15 @@ export function AboutSection() {
               </div>
 
               {/* Name & Title */}
-              <h2 className="font-syne font-extrabold text-[64px] sm:text-[80px] md:text-[92px] uppercase leading-none tracking-tight text-[#F5F0E8]">
+              <h2 className="font-syne font-extrabold text-[42px] xs:text-[56px] sm:text-[80px] md:text-[92px] uppercase leading-none tracking-tight text-[#F5F0E8] w-full">
                 Shayan
               </h2>
-              <h3 className="font-syne font-extrabold text-2xl sm:text-3xl text-[#C5FF3C] mt-3 select-none">
+              <h3 className="font-syne font-extrabold text-lg xs:text-xl sm:text-2xl text-[#C5FF3C] mt-2 sm:mt-3 select-none">
                 AI Engineer & Product Manager
               </h3>
 
               {/* Social Pills */}
-              <div className="flex flex-wrap gap-3 mt-6">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 xs:gap-3 mt-4 sm:mt-6">
                 {socialPills.map((social) => (
                   <a
                     key={social.label}
@@ -362,14 +362,14 @@ export function AboutSection() {
               </div>
 
               {/* Bio Paragraph */}
-              <p className="font-space-grotesk font-normal text-[17px] md:text-[19px] leading-relaxed text-[#F5F0E8]/75 mt-8 max-w-3xl">
+              <p className="font-space-grotesk font-normal text-[15px] xs:text-[17px] md:text-[19px] leading-relaxed text-[#F5F0E8]/75 mt-6 sm:mt-8 max-w-3xl text-center lg:text-left">
                 Hi, I'm Shayan, a Karachi-based product manager and AI engineer. I make sense of complex problems and ship clean, usable products. My work spans the full stack, from writing PRDs and shaping product strategy to building AI agents, automations, and multi-tenant platforms. What drives me is simple: AI-powered tools that real businesses actually use.
               </p>
             </div>
 
             {/* Section 2: Work Experience */}
             <div className="flex flex-col items-start text-left">
-              <h3 className="font-syne font-extrabold text-4xl uppercase tracking-tight text-[#F5F0E8] mb-12">
+              <h3 className="font-syne font-extrabold text-2xl xs:text-3xl sm:text-4xl uppercase tracking-tight text-[#F5F0E8] mb-8 sm:mb-12">
                 Work Experience
               </h3>
               
@@ -408,7 +408,7 @@ export function AboutSection() {
 
             {/* Section 3: Studies */}
             <div className="flex flex-col items-start text-left">
-              <h3 className="font-syne font-extrabold text-4xl uppercase tracking-tight text-[#F5F0E8] mb-12">
+              <h3 className="font-syne font-extrabold text-2xl xs:text-3xl sm:text-4xl uppercase tracking-tight text-[#F5F0E8] mb-8 sm:mb-12">
                 Studies
               </h3>
 
@@ -428,16 +428,16 @@ export function AboutSection() {
 
             {/* Section 4: Technical Skills (3D Keyboard) */}
             <div className="flex flex-col items-start text-left overflow-visible">
-              <h3 className="font-syne font-extrabold text-4xl uppercase tracking-tight text-[#F5F0E8] mb-2">
+              <h3 className="font-syne font-extrabold text-2xl xs:text-3xl sm:text-4xl uppercase tracking-tight text-[#F5F0E8] mb-2">
                 Technical Skills
               </h3>
-              <p className="font-space-grotesk text-base text-[#F5F0E8]/50 mb-10">
+              <p className="font-space-grotesk text-sm sm:text-base text-[#F5F0E8]/50 mb-6 sm:mb-10">
                 An interactive 3D mechanical keyboard layout representing my primary tech platforms.
               </p>
 
               {/* OLED Telemetry Console Display */}
               <div className="w-full max-w-2xl select-none">
-                <div className="mb-10 p-6 rounded-2xl border border-white/5 bg-[#12121A] relative overflow-hidden shadow-inner">
+                <div className="mb-10 p-4 sm:p-6 rounded-2xl border border-white/5 bg-[#12121A] relative overflow-hidden shadow-inner">
                   {/* CRT/OLED Scanline Scan Grid Effect */}
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,26,0)_95%,rgba(0,0,0,0.35)_95%)] bg-[size:100%_4px] pointer-events-none opacity-20" />
                   <div className="absolute inset-0 bg-[#C5FF3C]/2 blur-[60px] pointer-events-none" />
@@ -498,9 +498,9 @@ export function AboutSection() {
               </div>
 
               {/* 3D Keyboard Scene Wrapper */}
-              <div className="w-full flex justify-center items-center py-10 overflow-visible">
+              <div className="w-full flex justify-center items-center py-10 overflow-hidden md:overflow-visible">
                 <div className="perspective-scene w-full max-w-2xl flex justify-center items-center overflow-visible">
-                  <div className="isometric-grid grid grid-cols-4 gap-6 sm:gap-8 p-8 sm:p-12 bg-[#09090F]/80 border border-white/5 rounded-3xl transform-style-3d shadow-[0_30px_70px_rgba(0,0,0,0.85)]">
+                  <div className="isometric-grid grid grid-cols-4 gap-3.5 xs:gap-5 sm:gap-8 p-4 xs:p-8 sm:p-12 bg-[#09090F]/80 border border-white/5 rounded-3xl transform-style-3d shadow-[0_30px_70px_rgba(0,0,0,0.85)]">
                     {skillsData.map((skill) => (
                       <Keycap
                         key={skill.label}

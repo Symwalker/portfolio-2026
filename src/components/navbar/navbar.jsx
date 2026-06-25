@@ -22,17 +22,18 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: -50, x: "-50%", opacity: 0 }}
+        animate={{ y: 0, x: "-50%", opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-6 left-0 right-0 z-50 w-full flex justify-center pointer-events-none"
+        style={{ left: "50%" }}
+        className="fixed top-3 sm:top-6 z-50 w-[94vw] sm:w-[90vw] max-w-5xl pointer-events-none"
       >
         {/* Floating Capsule */}
         <div
-          className="relative w-[90vw] max-w-5xl rounded-full flex items-center justify-between px-6 py-2.5 border border-white/8 bg-[#09090F]/65 backdrop-blur-xl backdrop-saturate-180 shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-auto"
+          className="relative w-full rounded-full flex items-center justify-between px-4 py-2 sm:px-6 sm:py-2.5 border border-white/8 bg-[#09090F]/65 backdrop-blur-xl backdrop-saturate-180 shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-auto"
         >
           {/* Left: Wordmark */}
-          <Link to="/" className="flex items-center font-syne font-bold text-[13px] tracking-[1px] uppercase">
+          <Link to="/" className="flex items-center font-syne font-bold text-[11px] xs:text-[13px] tracking-[1px] uppercase">
             <span className="text-[#F5F0E8]">shayan</span>
             <span className="text-[#C5FF3C]">.builds.ai</span>
           </Link>

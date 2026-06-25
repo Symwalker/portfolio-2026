@@ -108,17 +108,19 @@ export function HeroVideo({ src, onVideoEnded, className }) {
       <motion.video
         ref={videoRef}
         src={src}
+        autoPlay
+        muted
         playsInline
         onCanPlay={() => setIsLoaded(true)}
         onEnded={handleEnded}
         initial={{ opacity: 0 }}
         animate={isLoaded ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="h-full w-full object-contain object-center scale-[1.02]" // Object-contain prevents head cropping, scale gives a tiny bleeding border
+        className="h-full w-full object-cover md:object-contain object-center scale-[1.02]" // object-cover on mobile zooms the headshot, md:object-contain on desktop preserves aspect ratio
       />
       
       {/* Dark overlay to blend video into the page background */}
-      <div className="absolute inset-0 bg-[#09090F]/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#09090F]/50 md:bg-[#09090F]/30 pointer-events-none" />
 
       {/* Floating Speaker Control Button (displays when loaded) */}
       {isLoaded && (

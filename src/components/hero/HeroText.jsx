@@ -15,6 +15,15 @@ export function HeroText({ isVideoFinished = false, className }) {
   const [videoFinished, setVideoFinished] = useState(isVideoFinished)
   const [activeIndex, setActiveIndex] = useState(-1)
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   useEffect(() => {
     if (isVideoFinished) {
       setVideoFinished(true)
@@ -101,7 +110,7 @@ export function HeroText({ isVideoFinished = false, className }) {
   return (
     <div
       className={cn(
-        "absolute inset-x-0 bottom-[100px] z-30 px-6 md:px-16 lg:px-24 flex flex-col md:flex-row md:justify-between md:items-end gap-12 pointer-events-none select-none",
+        "absolute inset-x-0 bottom-14 xs:bottom-16 md:bottom-[100px] z-30 px-4 sm:px-6 md:px-16 lg:px-24 flex flex-col md:flex-row md:justify-between md:items-end gap-2.5 sm:gap-6 md:gap-12 pointer-events-none select-none",
         className
       )}
     >
@@ -110,10 +119,10 @@ export function HeroText({ isVideoFinished = false, className }) {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-start gap-5 max-w-xl pointer-events-auto"
+        className="flex flex-col items-center md:items-start text-center md:text-left gap-2.5 md:gap-5 max-w-xl w-full md:w-auto pointer-events-auto"
       >
         {/* Available Badge */}
-        <motion.div variants={itemVariants} className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/5 bg-[#09090F]/50 backdrop-blur-sm">
+        <motion.div variants={itemVariants} className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full border border-white/5 bg-[#09090F]/50 backdrop-blur-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-space-grotesk font-light text-[10px] tracking-[1.5px] text-[#F5F0E8]/40 uppercase">
             AVAILABLE FOR PROJECTS
@@ -121,11 +130,11 @@ export function HeroText({ isVideoFinished = false, className }) {
         </motion.div>
 
         {/* Name Stack */}
-        <motion.div variants={itemVariants} className="flex flex-col">
-          <span className="font-dm-sans italic font-light text-[14px] text-[#F5F0E8]/40 ml-1">
+        <motion.div variants={itemVariants} className="hidden md:flex flex-col">
+          <span className="font-dm-sans italic font-light text-[14px] text-[#F5F0E8]/40 md:ml-1 mx-auto md:mx-0">
             Hi, I'm
           </span>
-          <h1 className="font-syne font-extrabold text-[48px] md:text-[68px] lg:text-[86px] leading-[0.95] text-[#F5F0E8] uppercase tracking-tight flex flex-col mt-1">
+          <h1 className="font-syne font-extrabold text-[28px] xs:text-[36px] sm:text-[48px] md:text-[68px] lg:text-[86px] leading-[0.95] text-[#F5F0E8] uppercase tracking-tight flex flex-col mt-1">
             <span>I AM</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5F0E8] via-[#F5F0E8] to-[#C5FF3C]/80">SHAYAN</span>
           </h1>
@@ -140,22 +149,22 @@ export function HeroText({ isVideoFinished = false, className }) {
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex items-center gap-4 pt-2">
+        <motion.div variants={itemVariants} className="flex items-center justify-center md:justify-start gap-4 pt-1 md:pt-2 w-full">
           {/* Primary Lime Button */}
           <Magnetic>
             <motion.div whileTap={{ scale: 0.98 }}>
               <Link
                 to="/work"
-                className="hover-shake inline-flex items-center gap-1.5 px-6 py-3 rounded-lg bg-[#C5FF3C] text-[#09090F] font-space-grotesk font-semibold text-[12px] uppercase tracking-wider transition-opacity duration-200 hover:opacity-95 shadow-[0_4px_20px_rgba(197,255,60,0.25)]"
+                className="hover-shake inline-flex items-center gap-1.5 px-4 py-2 md:px-6 md:py-3 rounded-lg bg-[#C5FF3C] text-[#09090F] font-space-grotesk font-semibold text-[10px] md:text-[12px] uppercase tracking-wider transition-opacity duration-200 hover:opacity-95 shadow-[0_4px_20px_rgba(197,255,60,0.25)]"
               >
-                View Work <IconArrowUpRight size={14} stroke={2.5} />
+                View Work <IconArrowUpRight size={12} className="md:w-3.5 md:h-3.5" stroke={2.5} />
               </Link>
             </motion.div>
           </Magnetic>
 
           {/* Secondary Outline Button */}
           <Magnetic>
-            <motion.div whileTap={{ scale: 0.98 }}>
+            <motion.div whileTap={{ scale: 0.98 }} className="hidden md:block">
               <a
                 href="https://calendly.com/shayanhanif50/30min"
                 target="_blank"
@@ -170,13 +179,13 @@ export function HeroText({ isVideoFinished = false, className }) {
       </motion.div>
 
       {/* ── Right Column: Socials, Client Stack, & Info ── */}
-      <div className="flex flex-col items-start md:items-end gap-7 md:text-right max-w-sm pointer-events-auto">
+      <div className="flex flex-col items-center md:items-end gap-4 sm:gap-6 md:gap-7 md:text-right max-w-full md:max-w-sm w-full md:w-auto pointer-events-auto">
         {/* Social Handlers capsule list */}
         <motion.div
           variants={socialContainerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-3.5 w-full items-start md:items-end"
+          className="hidden md:flex md:flex-col gap-3 w-full items-end"
         >
           {socialList.map((soc, idx) => (
             <motion.a
@@ -185,16 +194,17 @@ export function HeroText({ isVideoFinished = false, className }) {
               target="_blank"
               rel="noopener noreferrer"
               variants={socialItemVariants}
-              whileHover={{ x: 6, scale: 1.03 }}
+              whileHover={isMobile ? { scale: 1.05 } : { x: 6, scale: 1.03 }}
               className={cn(
-                "inline-flex items-center gap-3 px-6 py-3 rounded-full border bg-white/5 transition-all duration-300 shadow-md",
+                "flex items-center justify-center border bg-white/5 transition-all duration-300 shadow-md",
+                "h-10 w-10 rounded-full p-0 md:h-auto md:w-auto md:px-6 md:py-3 md:rounded-full md:inline-flex md:items-center md:gap-3",
                 idx === activeIndex
-                  ? "text-[#F5F0E8] border-[#C5FF3C] shadow-[0_0_15px_rgba(197,255,60,0.35)] translate-x-1.5 scale-[1.03]"
+                  ? "text-[#F5F0E8] border-[#C5FF3C] shadow-[0_0_15px_rgba(197,255,60,0.35)] md:translate-x-1.5 scale-[1.03]"
                   : "border-white/8 text-[#F5F0E8]/70 hover:text-[#F5F0E8] hover:border-[#C5FF3C] hover:shadow-[0_0_15px_rgba(197,255,60,0.35)]"
               )}
             >
               {soc.icon}
-              <span className="font-space-grotesk font-light text-[11px] uppercase tracking-widest">{soc.name}</span>
+              <span className="hidden md:inline font-space-grotesk font-light text-[11px] uppercase tracking-widest">{soc.name}</span>
             </motion.a>
           ))}
         </motion.div>
@@ -204,7 +214,7 @@ export function HeroText({ isVideoFinished = false, className }) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.9 }}
-          className="flex items-center gap-4 mt-3"
+          className="hidden md:flex items-center justify-end gap-4 mt-3 w-full"
         >
           {/* Overlapping avatars */}
           <div className="flex -space-x-4">
@@ -227,7 +237,7 @@ export function HeroText({ isVideoFinished = false, className }) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.9 }}
-          className="font-dm-sans font-light text-[12px] leading-relaxed text-[#F5F0E8]/35 max-w-[220px]"
+          className="font-dm-sans font-light text-[12px] leading-relaxed text-[#F5F0E8]/35 text-center md:text-right max-w-xs md:max-w-[220px] mx-auto md:mx-0"
         >
           Creating immersive front-ends, advanced 3D visual experiences, and aesthetic digital structures.
         </motion.p>

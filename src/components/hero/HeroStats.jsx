@@ -41,10 +41,10 @@ export function HeroStats({ isVideoFinished }) {
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-      className="absolute bottom-0 left-0 right-0 z-40 bg-[#09090F]/85 border-t border-white/6 px-6 md:px-16 lg:px-24 py-4.5 flex items-center justify-between pointer-events-auto"
+      className="absolute bottom-0 left-0 right-0 z-40 bg-[#09090F]/85 border-t border-white/6 px-4 sm:px-6 md:px-16 lg:px-24 py-3.5 sm:py-4.5 flex items-center justify-center sm:justify-between pointer-events-auto"
     >
       {/* Left: Scroll Down Indicator */}
-      <div className="flex items-center gap-3">
+      <div className="hidden sm:flex items-center gap-3">
         {/* Capsule Mouse Outline */}
         <div
           className={cn(
@@ -73,7 +73,7 @@ export function HeroStats({ isVideoFinished }) {
       </div>
 
       {/* Right: Stats separated by vertical dividers */}
-      <div className="flex items-center gap-3.5 sm:gap-6 md:gap-8">
+      <div className="flex items-center gap-3 sm:gap-6 md:gap-8">
         {stats.map((stat, idx) => (
           <React.Fragment key={idx}>
             <StatItem

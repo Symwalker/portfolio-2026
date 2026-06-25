@@ -24,14 +24,14 @@ export function HeroSection() {
       {/* z-0: 3D Canvas Layer */}
       <ThreeBackground />
 
-      {/* z-10: Hero Video (starts at top-20 to provide a comfortable margin below navbar) */}
+      {/* z-10: Hero Video (full screen on mobile, comfortable capsule frame on desktop) */}
       <Suspense fallback={
-        <div className="absolute top-20 bottom-[68px] inset-x-6 rounded-2xl bg-zinc-900/10 border border-white/5 animate-pulse z-10" />
+        <div className="absolute inset-0 md:top-20 md:bottom-[68px] md:inset-x-6 md:rounded-2xl bg-zinc-900/10 border border-white/5 animate-pulse z-10" />
       }>
         <HeroVideo 
           src="/videos/intro-video.mp4" 
           onVideoEnded={handleVideoEnded}
-          className="absolute top-20 bottom-[68px] inset-x-0 z-10"
+          className="absolute inset-0 md:top-20 md:bottom-[68px] md:inset-x-0 z-10"
         />
       </Suspense>
 
